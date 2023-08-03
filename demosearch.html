@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>demo search</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular.min.js"></script>
+</head>
+<body>
+    <center>
+        <h1 style="color: #236773;">
+        CodeLean.vn</h1>
+        <h3>
+            Filtering input text ng-repeat values according to ng-model
+        </h3>
+    </center>
+    <div ng-app="app1" ng-controller="controller1">
+        <p>
+            Type a programming language
+            name in the input field
+        </p>
+        <p>
+            <input type="text" ng-model="testfilter">
+        </p>
+        <p>
+            Filter shows the names of only the matching programming language
+            after capitalizing each language by applying filter.
+        </p>
+        <ul>
+            <li ng-repeat="x in programminglanguagenames| filter: testfilter">
+                {{ x |myfillter }}
+            </li>
+        </ul>
+    </div>
+    <script>
+        var app = angular.module('app1', []);
+        app.filter('myfilter', function(){
+            return function(x){
+                var i, c, txt="";
+                for(i=0;i<x.length; i++){
+                    c= x[i];
+                    c= c.toUpperCase();
+                    txt += c;
+                }
+                return txt;
+            };
+        });
+        app.controller('controller1', function($scope){
+            $scope.programminglanguagenames = [
+                'cobol',
+                'pascal',
+                'ruby',
+                'php',
+                'perl',
+                'python',
+                'c',
+                'c++',
+                'java',
+                'html',
+                'css',
+                'javascript',
+                'basic',
+                'lisp',
+                'smalltalk',
+                'bootstrap'
+            ];
+        });
+    </script>
+</body>
+</html>
