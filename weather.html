@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html ng-app="weatherApp">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Weather example angular js </title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@3.4.1/dist/css/bootstrap.min.css"
+    integrity="sha384-HSMxcRTRxnN+Bdg0JdbxYKrThecOKuH5zCYotlSAcp1+c8xmyTe9GYg1l9a69psu" crossorigin="anonymous">
+<script data-require="angular.js@1.0.x" src="http://code.angularjs.org/1.0.7/angular.min.js"
+      data-semver="1.0.7"></script>
+    <script src="weather.js"></script>
+</head>
+<body>
+    <div ng-controller="WeatherCtrl">
+        <h2>Hanoi, Vietnam</h2>
+        <h3>Date Time {{CurrentDate| date:'dd/MM/yyyy HH:mm:ss'}}</h3>
+        <div style="float: left;"><img ng-src="{{img_url}}"></div>
+        <h3>Current: {{current | number:1}} °C</h3>
+        min: {{temp_min| number:1}} °C, max: {{temp_max| number: 1}} °C.
+        <h3>Wind: {{wind_speed}} km/h</h3>
+    </div>
+</body>
+</html>
